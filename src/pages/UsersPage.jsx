@@ -1,18 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-
-const Users = () => {
-    const { id }  = useParams();   
+const UsersPage = () => {
+    const { name }  = useParams();   
 
     return (
-    <div className='border-2'> 
-        <h2>Name: Daniel Rodriguez</h2>
-        <p>
-            I am nineteen years old
-            This id is {id}
-        </p>
+    <div className='h-3/5 border-2 flex justify-center items-center flex-col gap-8 text-center'> 
+        <div>
+            <h1 className='text-4xl text-blue-800'>UserPage</h1>
+            <p>(Public)</p>
+        </div>
+        <div>
+            <h2 className='text-2xl'>Your name is: {name}</h2>
+            <p>from params url</p>
+        </div>
+        <Link to='/users' className='bg-white text-black p-2 rounded'>Back to</Link>
     </div>
   )
 }
 
-export default Users
+export default UsersPage

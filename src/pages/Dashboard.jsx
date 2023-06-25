@@ -9,12 +9,13 @@ const Dashboard = () => {
     }
 
     return (
-    <div className='flex gap-4 flex-col'>
-        <h1>Dashboard</h1>
+    <div className='h-3/5 flex justify-center items-center gap-4 flex-col border-2'>
+        <h1 className='text-4xl text-blue-800' >Dashboard </h1>
+        <p>(Private)</p>
         <button onClick={handleClick}>
-            Logout
+            Back to Landing
         </button>
-        <Link to='welcome' >Say Welcomee</Link>
+            <Link to='welcome' className='bg-white text-black p-2 rounded'>Say Welcomee</Link>
         <Outlet />
     </div>
   )

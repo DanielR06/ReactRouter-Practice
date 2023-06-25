@@ -1,25 +1,20 @@
 import { useState } from 'react';
 import {BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-  
+//Pages  
 import Home from './pages/Home';
 import Landing from './pages/Landing';
 import NotFound from "./pages/NotFound";
 import UsersPage from "./pages/UsersPage"
 import Dashboard from './pages/Dashboard';
+import Analytics from './pages/Analytics';
 import Admin from './pages/Admin';
-  
+import Users from './pages/Users';
+//Components  
 import Navbar from "./components/Navbar"
 import Footer from './components/Footer';
-import Analytics from './components/Analytics';
 import ProtectedRoute from './components/ProtectedRoute';
-/*
-  Landing (Public)
-  Home (Private)
-  Dashboard (Private)
-  Analytics (Private & persmission : 'analize')
-  Admin (Privaye & persmission : 'admin')
-  <Admin />
-*/
+import SessionBotton from './components/SessionBotton';
+
 const App = () => {
   const [user, setUser] = useState(null)
 
@@ -29,7 +24,7 @@ const App = () => {
       id:1,
       name: 'Daniel',
       permissions: ['analize'],
-      roles: []
+      roles: ['admin']
     })
   }
 
@@ -37,15 +32,11 @@ const App = () => {
     setUser(null)
   }
   return (
-  <BrowserRouter>
-    <Navbar />
-    {
-      user ? (
-      <button onClick={logout} className='bg-white text-black p-4'>Logout</button>
-      ) : (
-      <button onClick={login} className='bg-white text-black p-4'>Login</button>
-      )
-    }
+  <BrowserRouter >
+    <Navbar>
+      <SessionBotton user={user} login={login} logout={logout} />
+    </Navbar>
+    
     <Routes>
       <Route path='/' element={<Landing />} />
       <Route element={<ProtectedRoute isAllow={!!user}/>}>
@@ -74,7 +65,9 @@ const App = () => {
         </ProtectedRoute>
       } />
 
-      <Route path='/users/:id' element={<UsersPage />} />
+      <Route path='/users' element={<Users />} />
+
+      <Route path='/users/:name' element={<UsersPage />} />
       <Route path='/users2' element={<Navigate replace to='/users' /> } />
 
 
