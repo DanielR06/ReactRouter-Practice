@@ -9,7 +9,7 @@ const Dashboard = () => {
     }
 
     return (
-    <div>
+    <div className='flex gap-4 flex-col'>
         <h1>Dashboard</h1>
         <button onClick={handleClick}>
             Logout

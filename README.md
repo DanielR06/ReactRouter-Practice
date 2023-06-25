@@ -2,7 +2,7 @@
 
 ![React Router Logo](https://reactrouter.com/ogimage.png "reactrouter.com")
 
-This project is a practice of React Router Dom in version 6. 
+##### This project is a practice of React Router Dom in version 6. 
 We use components such as 
 
 - BrowserRouter
@@ -14,8 +14,4 @@ We use components such as
 - useNavigate
 - useParams 
 - Outlet
-
-
-
-
 
